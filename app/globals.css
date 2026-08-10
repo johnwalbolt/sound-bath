@@ -1,26 +1,244 @@
 @import "tailwindcss";
 
+/* ── Design tokens ───────────────────────────────────────────────
+   Recreation of soundbathvibrations.com
+   Dark, ambient, sound-healing brand.
+------------------------------------------------------------------ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #030203;
+  --foreground: #ededed;
+  --muted: #9aa0ac;
+
+  /* Brand gradient: purple -> pink -> orange -> gold (the "sound sun") */
+  --brand-violet: #6d28d9;
+  --brand-purple: #8b2fc9;
+  --brand-magenta: #c026d3;
+  --brand-pink: #ec4899;
+  --brand-orange: #f97316;
+  --brand-gold: #fbbf24;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-muted: var(--muted);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-violet: var(--brand-violet);
+  --color-purple: var(--brand-purple);
+  --color-magenta: var(--brand-magenta);
+  --color-pink: var(--brand-pink);
+  --color-orange: var(--brand-orange);
+  --color-gold: var(--brand-gold);
+
+  /* Fonts wired up in layout.tsx via next/font */
+  --font-sans: var(--font-montserrat);
+  --font-serif: var(--font-serif-display);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Utility: the brand text gradient */
+.text-gradient {
+  background: linear-gradient(
+    90deg,
+    var(--brand-purple),
+    var(--brand-pink),
+    var(--brand-orange)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hero ripples: emerge bright at the logo, drop quickly to a soft level a
+   little way out, drift softly to the screen edges, then keep expanding PAST
+   the viewport and fade to 0 while off-screen — so the loop reset is never
+   visible and the animation reads as perfectly continuous. Looped with
+   staggered negative delays so the field is pre-filled on load. */
+@keyframes ripple-expand {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.5;
+  }
+  16% {
+    opacity: 0.4;
+  }
+  60% {
+    /* ~screen edge: still soft and clearly visible */
+    opacity: 0.34;
+  }
+  100% {
+    /* well past the viewport: faded out, so the reset is invisible */
+    transform: scale(7);
+    opacity: 0;
+  }
+}
+
+/* Full-strength variant of the ripple loop (peak opacity 1.0). Used where a
+   wrapper opacity scales the displayed level up/down (e.g. variant 3 scroll). */
+@keyframes ripple-expand-full {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  16% {
+    opacity: 0.8;
+  }
+  60% {
+    opacity: 0.68;
+  }
+  100% {
+    transform: scale(7);
+    opacity: 0;
+  }
+}
+
+/* ── Variant 2: mouse "through water" ripples ─────────────────────
+   Each ripple is spawned at the cursor and expands + fades once. */
+.mouse-ripple {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 3px solid rgba(200, 180, 255, 0.95);
+  background: radial-gradient(
+    circle,
+    rgba(140, 110, 255, 0.3) 0%,
+    rgba(120, 90, 255, 0.12) 55%,
+    transparent 72%
+  );
+  box-shadow:
+    0 0 50px 8px rgba(92, 30, 228, 0.5),
+    inset 0 0 40px rgba(140, 110, 255, 0.35);
+  transform: translate(-50%, -50%) scale(0.1);
+  will-change: transform, opacity;
+  animation: mouse-ripple 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes mouse-ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0.1);
+    opacity: 0.95;
+  }
+  70% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+/* ── Variant 3: fully-animated hero (filled sun + wordmark) ─────── */
+@keyframes sun-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes sun-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.035);
+  }
+}
+
+/* Variant 3 emitted ripples: each is spawned at the logo's current position +
+   rotation, then expands in place (duration must match DURATION in
+   LogoRippleEmitter.tsx). */
+.logo-ripple-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform-box: fill-box;
+  transform-origin: center;
+  filter: drop-shadow(0 0 8px rgba(92, 30, 228, 0.6));
+  will-change: transform, opacity;
+  animation: logo-ripple-expand 20s linear forwards;
+}
+@keyframes logo-ripple-expand {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  6% {
+    opacity: 0.9;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(7);
+    opacity: 0;
+  }
+}
+@keyframes sun-glow {
+  0%,
+  100% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+@keyframes wordmark-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+@keyframes wordmark-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+.animated-wordmark {
+  font-family: var(--font-serif), serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  white-space: nowrap;
+  background: linear-gradient(
+    90deg,
+    #fbbf24,
+    #f97316,
+    #ec4899,
+    #8b2fc9,
+    #fbbf24
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation:
+    wordmark-shimmer 8s linear infinite,
+    wordmark-breathe 8s ease-in-out infinite;
 }
