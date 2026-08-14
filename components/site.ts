@@ -63,6 +63,7 @@ export const CONTACT_EMAIL = "Soundbathvibrations@gmail.com";
 
 // ── Catalog categories ──────────────────────────────────────────────────────
 export type PlaylistLink = { label: string; href: string; Icon: IconType };
+export type Frequency = { hz: string; href: string };
 
 export type Category = {
   slug: string;
@@ -72,7 +73,7 @@ export type Category = {
   playlistLabel: string;
   embed: { type: "spotify" | "youtube"; src: string };
   links: PlaylistLink[];
-  frequencies?: string[];
+  frequencies?: Frequency[];
 };
 
 export const CATEGORY_ORDER = [
@@ -108,13 +109,13 @@ export const CATEGORIES: Record<string, Category> = {
       },
     ],
     frequencies: [
-      "417 Hz",
-      "396 Hz",
-      "528 Hz",
-      "741 Hz",
-      "639 Hz",
-      "852 Hz",
-      "963 Hz",
+      { hz: "396 Hz", href: "https://youtu.be/eMAEpAPXkrA" },
+      { hz: "417 Hz", href: "https://youtu.be/7MSJRVATQz4" },
+      { hz: "528 Hz", href: "https://youtu.be/FyhaUqkfEDY" },
+      { hz: "639 Hz", href: "https://youtu.be/fT6pO8sJuh0" },
+      { hz: "741 Hz", href: "https://youtu.be/Hze8zW-f0SA" },
+      { hz: "852 Hz", href: "https://youtu.be/_pYVhis2lRo" },
+      { hz: "963 Hz", href: "https://youtu.be/aEHGh4UCh_E" },
     ],
   },
   sleep: {

@@ -30,6 +30,9 @@ export const metadata: Metadata = {
   title: "Sound Bath — A holistic wellness experience through sound",
   description:
     "Explore our full catalog of music for healing, meditation, sleep, solfeggio frequencies, and more.",
+  icons: {
+    icon: [{ url: "/favicon-32x32.webp", type: "image/webp", sizes: "32x32" }],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

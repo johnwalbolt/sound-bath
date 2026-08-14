@@ -23,3 +23,17 @@ export const shimmerTextStyle: CSSProperties = {
   filter: "drop-shadow(0 0 16px rgba(139,92,246,0.45))",
   animation: "wordmark-shimmer 20s linear infinite",
 };
+
+// Mostly-white variant with visible pastel color bands (purple/cyan/pink/gold)
+// between the white — used for category page headers.
+export const shimmerTextWhiteStyle: CSSProperties = {
+  backgroundImage:
+    "linear-gradient(105deg,#ffffff 0%,#b79cff 14%,#ffffff 28%,#7fe3ee 42%,#ffffff 54%,#ff9ecb 66%,#ffffff 78%,#ffd36b 90%,#ffffff 100%)",
+  backgroundSize: "200% 100%",
+  backgroundRepeat: "repeat",
+  WebkitBackgroundClip: "text",
+  backgroundClip: "text",
+  color: "transparent",
+  filter: "drop-shadow(0 0 16px rgba(200,180,255,0.3))",
+  animation: "wordmark-shimmer 20s linear infinite",
+};

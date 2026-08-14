@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageShell from "@/components/pages/PageShell";
-import ImagePlaceholder from "@/components/pages/ImagePlaceholder";
 import CtaButton from "@/components/CtaButton";
-import { BODY, SERIF, shimmerTextStyle } from "@/components/home/panel";
+import { BODY } from "@/components/home/panel";
+import aboutHeader from "@/public/assets/about-header.webp";
+import aboutPageBg from "@/public/assets/about-page-bg.webp";
+import aboutMain from "@/public/assets/about-main.webp";
 
 export const metadata: Metadata = {
   title: "About — Sound Bath",
@@ -25,14 +28,25 @@ const ARTISTS = [
 
 export default function AboutPage() {
   return (
-    <PageShell>
-      <section className="mx-auto max-w-4xl px-6">
-        <h1
-          className="text-[clamp(3rem,9vw,6rem)] leading-none"
-          style={shimmerTextStyle}
-        >
-          About
-        </h1>
+    <PageShell
+      background={
+        <Image
+          src={aboutPageBg}
+          alt=""
+          aria-hidden
+          priority
+          sizes="100vw"
+          className="pointer-events-none absolute inset-x-0 top-0 h-auto w-full select-none"
+        />
+      }
+    >
+      <section className="mx-auto max-w-5xl px-6">
+        <Image
+          src={aboutHeader}
+          alt="About"
+          priority
+          className="h-auto max-h-12 w-auto max-w-full md:max-h-16"
+        />
         <p className={`mt-6 max-w-2xl ${BODY}`}>
           Sound Bath started as a simple experiment in Andrew Heringer&rsquo;s
           California studio. As more people connected with the music, it grew
@@ -41,7 +55,12 @@ export default function AboutPage() {
         </p>
 
         <div className="mt-10">
-          <ImagePlaceholder label="Andrew Heringer in his recording studio" />
+          <Image
+            src={aboutMain}
+            alt="Andrew Heringer in his recording studio"
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            className="h-auto w-full rounded-2xl"
+          />
         </div>
 
         <p className={`mt-12 max-w-2xl ${BODY}`}>
@@ -54,10 +73,7 @@ export default function AboutPage() {
           {ARTISTS.map((a) => (
             <div key={a.name} className="shimmer-panel">
               <div className="flex h-full flex-col p-8">
-                <h2
-                  className="text-3xl leading-tight text-[#FFFFE5]"
-                  style={{ fontFamily: SERIF }}
-                >
+                <h2 className="font-sans text-2xl font-bold leading-tight tracking-[0.02em] text-[#FFFFE5]">
                   {a.name}
                 </h2>
                 <p className="mt-2 text-[12px] uppercase tracking-[0.18em] text-[#FFFFE5]/55">

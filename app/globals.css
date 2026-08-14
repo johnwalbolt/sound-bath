@@ -325,3 +325,25 @@ html {
   pointer-events: none;
   animation: wordmark-shimmer 20s linear infinite;
 }
+
+/* Shimmering colored glow halo for catalog art links (revealed on hover).
+   Per-category color comes from the inline --glow custom property. */
+.art-glow::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  z-index: -1;
+  border-radius: 16px;
+  background: var(
+    --glow,
+    linear-gradient(105deg, #c9b3ff, #9ee0ff, #ff9ecb, #ffd36b, #c9b3ff)
+  );
+  background-size: 200% 100%;
+  filter: blur(11px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  animation: wordmark-shimmer 6s linear infinite;
+}
+.art-glow:hover::before {
+  opacity: 0.9;
+}
