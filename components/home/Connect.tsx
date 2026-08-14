@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { FaInstagram } from "react-icons/fa";
 import CtaButton from "@/components/CtaButton";
+import { INSTAGRAM } from "@/components/site";
 import { BODY } from "./panel";
 import Reveal from "./Reveal";
 import SectionBg from "./SectionBg";
@@ -46,7 +47,7 @@ export default function Connect() {
               collaboration.
             </p>
             <div className="mt-8">
-              <CtaButton variant="solid" fullWidth>
+              <CtaButton variant="solid" fullWidth href="/connect">
                 CONNECT WITH US
               </CtaButton>
             </div>
@@ -60,7 +61,7 @@ export default function Connect() {
               Follow along for updates and releases on social media.
             </p>
             <div className="mt-8">
-              <CtaButton fullWidth>
+              <CtaButton fullWidth href={INSTAGRAM.href}>
                 <FaInstagram className="shrink-0 text-[15px]" aria-hidden />
                 INSTAGRAM
               </CtaButton>

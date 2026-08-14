@@ -49,7 +49,9 @@ export default function About() {
                 project expanded into a space for intentional sound.
               </p>
               <div className="mt-8">
-                <CtaButton variant="solid">ABOUT SOUND BATH</CtaButton>
+                <CtaButton variant="solid" href="/about">
+                  ABOUT SOUND BATH
+                </CtaButton>
               </div>
             </div>
           </div>

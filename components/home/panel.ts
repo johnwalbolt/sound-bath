@@ -4,6 +4,8 @@ import type { CSSProperties } from "react";
 export const BODY =
   "font-sans font-medium text-[16px] tracking-[0.05em] leading-relaxed text-white";
 
+export const SERIF = "var(--font-instrument-serif), serif";
+
 // Purple-dominant metallic gradient from the hero logo's palette (violet →
 // magenta → pink → gold), with lavender highlight bands. Starts and ends on the
 // same lavender so it loops seamlessly when the position is animated (shimmer).

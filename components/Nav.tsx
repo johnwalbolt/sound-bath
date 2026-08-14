@@ -1,24 +1,13 @@
 import Image from "next/image";
-import {
-  FaBandcamp,
-  FaAmazon,
-  FaApple,
-  FaSpotify,
-  FaYoutube,
-  FaInstagram,
-} from "react-icons/fa";
+import Link from "next/link";
+import { NAV_SOCIALS } from "@/components/site";
 import navLogo from "@/public/assets/nav-logo.webp";
 
-const LINKS = ["Catalog", "Connect", "About"];
-
-const SOCIALS = [
-  { label: "Bandcamp", Icon: FaBandcamp },
-  { label: "Amazon", Icon: FaAmazon },
-  { label: "Apple", Icon: FaApple },
-  { label: "Spotify", Icon: FaSpotify },
-  { label: "YouTube", Icon: FaYoutube },
-  { label: "Instagram", Icon: FaInstagram },
-];
+const LINKS = [
+  { label: "Catalog", href: "/catalog" },
+  { label: "Connect", href: "/connect" },
+  { label: "About", href: "/about" },
+] as const;
 
 export default function Nav() {
   return (
@@ -26,7 +15,7 @@ export default function Nav() {
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-5">
         {/* Left: logo + section links */}
         <div className="flex items-center gap-10">
-          <a href="#top" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <Image
               src={navLogo}
               alt="Sound Bath"
@@ -35,25 +24,29 @@ export default function Nav() {
               // center it with the (caps) nav links
               className="h-4 w-auto -translate-y-px md:h-5"
             />
-          </a>
-          {/* Links are dead for now (no destinations yet). */}
+          </Link>
           <ul className="hidden items-center gap-6 text-[12px] font-medium uppercase tracking-[0.18em] text-[#FFFFE5]/70 md:flex md:gap-9">
             {LINKS.map((l) => (
-              <li key={l}>
-                <span className="cursor-default transition-colors hover:text-[#FFFFE5]">
-                  {l}
-                </span>
+              <li key={l.label}>
+                <Link
+                  href={l.href}
+                  className="transition-colors hover:text-[#FFFFE5]"
+                >
+                  {l.label}
+                </Link>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Right: platform icons (dead for now) */}
+        {/* Right: platform icons */}
         <div className="flex items-center gap-4 text-[17px] text-[#FFFFE5]/70">
-          {SOCIALS.map(({ label, Icon }) => (
+          {NAV_SOCIALS.map(({ key, label, href, Icon }) => (
             <a
-              key={label}
-              href="#"
+              key={key}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={label}
               className="transition-colors hover:text-[#FFFFE5]"
             >

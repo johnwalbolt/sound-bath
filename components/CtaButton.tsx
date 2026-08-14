@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 
 /** Outlined pill CTA used throughout the site. `fullWidth` makes it fill its
  *  container (with lighter horizontal padding) for equal-width button rows.
- *  The solid (primary) variant gets an iridescent shine sweep on hover. */
+ *  Internal hrefs use next/link; external (http) hrefs open in a new tab. */
 export default function CtaButton({
   children,
   href = "#",
@@ -23,12 +24,31 @@ export default function CtaButton({
     variant === "solid"
       ? "btn-fill-shimmer-primary bg-foreground text-background"
       : "btn-fill-shimmer border border-foreground/40 text-foreground";
+  const className = `${base} ${styles}`;
+
+  // keep label above the shine sweep
+  const label = (
+    <span className="relative z-10 inline-flex items-center gap-2">
+      {children}
+    </span>
+  );
+
+  const isExternal = /^https?:\/\//.test(href);
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+      >
+        {label}
+      </a>
+    );
+  }
   return (
-    <a href={href} className={`${base} ${styles}`}>
-      {/* keep label above the shine sweep */}
-      <span className="relative z-10 inline-flex items-center gap-2">
-        {children}
-      </span>
-    </a>
+    <Link href={href} className={className}>
+      {label}
+    </Link>
   );
 }

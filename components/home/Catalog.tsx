@@ -2,14 +2,8 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import {
-  FaBandcamp,
-  FaAmazon,
-  FaApple,
-  FaSpotify,
-  FaYoutube,
-} from "react-icons/fa";
 import CtaButton from "@/components/CtaButton";
+import { STREAMING } from "@/components/site";
 import catalogBg from "@/public/assets/catalog-bg.webp";
 import albumArt from "@/public/assets/album-art.webp";
 import catalogHeader from "@/public/assets/catalog-header.webp";
@@ -17,14 +11,8 @@ import { BODY } from "./panel";
 import Reveal from "./Reveal";
 import SectionBg from "./SectionBg";
 
-// Store buttons; `group` renders a small label above that button.
-const STORES = [
-  { label: "BANDCAMP", group: "BUY", Icon: FaBandcamp },
-  { label: "AMAZON", group: "STREAM", Icon: FaAmazon },
-  { label: "APPLE", Icon: FaApple },
-  { label: "SPOTIFY", Icon: FaSpotify },
-  { label: "YOUTUBE", Icon: FaYoutube },
-];
+// Small group label shown above certain store buttons.
+const GROUPS: Record<string, string> = { bandcamp: "BUY", amazon: "STREAM" };
 
 /** Catalog section: sun-rings backdrop + a panel with copy/CTA and the album
  *  grid, plus a panel of store links. Each panel fades independently; the
@@ -60,7 +48,9 @@ export default function Catalog() {
                 sleep, solfeggio frequencies, and more.
               </p>
               <div className="mt-8">
-                <CtaButton variant="solid">VIEW CATALOG</CtaButton>
+                <CtaButton variant="solid" href="/catalog">
+                  VIEW CATALOG
+                </CtaButton>
               </div>
             </div>
 
@@ -79,14 +69,14 @@ export default function Catalog() {
         {/* Panel 2: store links (BUY / STREAM) */}
         <Reveal className="shimmer-panel">
           <div className="grid grid-cols-2 gap-x-3 gap-y-4 p-8 sm:grid-cols-3 md:grid-cols-5 md:gap-x-4 md:p-10">
-            {STORES.map((s) => (
-              <div key={s.label} className="flex flex-col items-stretch gap-3">
+            {STREAMING.map((s) => (
+              <div key={s.key} className="flex flex-col items-stretch gap-3">
                 <span className="block h-4 text-center text-[11px] font-medium uppercase tracking-[0.22em] text-[#FFFFE5]/55">
-                  {s.group ?? ""}
+                  {GROUPS[s.key] ?? ""}
                 </span>
-                <CtaButton fullWidth>
+                <CtaButton fullWidth href={s.href}>
                   <s.Icon className="shrink-0 text-[15px]" aria-hidden />
-                  {s.label}
+                  {s.label.toUpperCase()}
                 </CtaButton>
               </div>
             ))}
