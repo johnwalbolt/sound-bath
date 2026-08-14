@@ -1,24 +1,26 @@
-"use client";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+import Hero from "@/components/home/Hero";
+import Catalog from "@/components/home/Catalog";
+import TextStrip from "@/components/home/TextStrip";
+import Connect from "@/components/home/Connect";
+import About from "@/components/home/About";
 
-import { useState } from "react";
-import { VersionContext } from "@/components/VersionContext";
-import VariantOne from "@/components/variants/VariantOne";
-import VariantTwo from "@/components/variants/VariantTwo";
-import VariantThree from "@/components/variants/VariantThree";
-
-// The three homepage variations to compare. Clicking the "SOUND BATH"
-// wordmark in the nav cycles 1 → 2 → 3 → 1. The editorial variant loads first.
-const VARIANTS = [VariantThree, VariantTwo, VariantOne];
-
+// Single homepage, built section by section. (The old 3-variant switcher was
+// removed — see components/home/* for the current sections.)
 export default function Home() {
-  const [version, setVersion] = useState(0);
-  const cycle = () => setVersion((v) => (v + 1) % VARIANTS.length);
-
-  const ActiveVariant = VARIANTS[version];
-
   return (
-    <VersionContext.Provider value={{ version, count: VARIANTS.length, cycle }}>
-      <ActiveVariant />
-    </VersionContext.Provider>
+    <>
+      <Nav />
+      <main>
+        <Hero />
+        <Catalog />
+        <TextStrip text="stay here as long as you need." />
+        <Connect />
+        <TextStrip text="mindfulness + frequency = healing" />
+        <About />
+      </main>
+      <Footer />
+    </>
   );
 }

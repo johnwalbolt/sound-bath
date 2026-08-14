@@ -242,3 +242,44 @@ html {
     wordmark-shimmer 8s linear infinite,
     wordmark-breathe 8s ease-in-out infinite;
 }
+
+/* Rounded content panel: clean #000 @80% fill, with a shimmering metallic
+   gradient confined to the 1px border ring via a masked pseudo-element (so the
+   gradient never bleeds into the fill). */
+.shimmer-panel {
+  position: relative;
+  border-radius: 24px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.shimmer-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    105deg,
+    #c9b3ff,
+    #8b5cf6,
+    #7c3aed,
+    #a21caf,
+    #c9a9ff,
+    #7c3aed,
+    #f538d4,
+    #9333ea,
+    #f5a623,
+    #b79cff,
+    #c9b3ff
+  );
+  background-size: 200% 100%;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: wordmark-shimmer 20s linear infinite;
+}

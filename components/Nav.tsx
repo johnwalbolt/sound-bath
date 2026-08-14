@@ -1,52 +1,33 @@
-"use client";
+import Image from "next/image";
+import navLogo from "@/public/assets/nav-logo.webp";
 
-import { useVersion } from "./VersionContext";
-
-const LINKS = [
-  { label: "HOME", href: "#top" },
-  { label: "CATALOG", href: "#catalog" },
-  { label: "CONNECT", href: "#connect" },
-  { label: "ABOUT", href: "#about" },
-];
+const LINKS = ["Catalog", "Connect", "About"];
 
 export default function Nav() {
-  const { version, count, cycle } = useVersion();
-
   return (
-    // Header is hidden by default and slides into view when the top of the
-    // screen is hovered. The header box still occupies the top strip (transform
-    // doesn't change layout), so that strip is the hover trigger.
-    <header className="group fixed inset-x-0 top-0 z-50">
-      <div className="-translate-y-full bg-background/80 backdrop-blur-md transition-transform duration-300 ease-out group-hover:translate-y-0">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-          {/* Wordmark cycles through the homepage variants */}
-          <button
-            type="button"
-            onClick={cycle}
-            title="Click to cycle homepage variations"
-            className="group/logo flex items-baseline gap-2 font-serif text-2xl tracking-[0.25em] text-foreground"
-          >
-            SOUND&nbsp;BATH
-            {count > 1 && (
-              <span className="font-sans text-[10px] tracking-[0.15em] text-foreground/40 transition-colors group-hover/logo:text-foreground/70">
-                {version + 1}/{count}
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-background/90 backdrop-blur-md">
+      <nav className="mx-auto flex max-w-6xl items-center gap-10 px-6 py-5">
+        <a href="#top" className="flex items-center">
+          <Image
+            src={navLogo}
+            alt="Sound Bath"
+            priority
+            // wordmark sits ~2px low in its canvas; nudge up to optically
+            // center it with the (caps) nav links
+            className="h-4 w-auto -translate-y-px md:h-5"
+          />
+        </a>
+        {/* Links are dead for now (no destinations yet). */}
+        <ul className="flex items-center gap-6 text-[12px] font-medium uppercase tracking-[0.18em] text-[#FFFFE5]/70 md:gap-9">
+          {LINKS.map((l) => (
+            <li key={l}>
+              <span className="cursor-default transition-colors hover:text-[#FFFFE5]">
+                {l}
               </span>
-            )}
-          </button>
-          <ul className="flex items-center gap-8 text-[13px] font-medium tracking-[0.15em] text-foreground/80">
-            {LINKS.map((l) => (
-              <li key={l.label}>
-                <a
-                  href={l.href}
-                  className="transition-colors hover:text-foreground"
-                >
-                  {l.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   );
 }
