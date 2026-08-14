@@ -26,12 +26,13 @@ export default function Hero() {
       className="relative h-screen overflow-hidden bg-black"
     >
       <motion.div className="absolute inset-0" style={{ opacity: scrollFade }}>
-        {/* Side-wave backdrop (BG35Blk2) — fades in on load with the hero */}
+        {/* Side-wave backdrop (BG35Blk2) — fades in LAST, after the logo and
+            tagline have loaded */}
         <motion.div
           className="pointer-events-none absolute inset-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 2.6, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 2.4, delay: 3.4, ease: "easeOut" }}
         >
           <Image
             src={bgSideWaves}

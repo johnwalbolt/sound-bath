@@ -23,7 +23,7 @@ export default function SectionBg({
   });
   const opacity = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.5, 0.8],
+    [0, 0.2, 0.72, 0.95],
     [0, 1, 1, 0],
   );
 

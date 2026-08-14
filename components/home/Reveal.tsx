@@ -21,15 +21,15 @@ export default function Reveal({
     target: ref,
     offset: ["start end", "end start"],
   });
-  // Fade in as it enters (lower half), hold briefly around center, then fade
-  // out from just past center → gone by ~80% (still on screen at the top, so
-  // the fade-out is clearly visible before it fully leaves).
+  // Fade in as it enters (lower half), then hold much longer — only fading out
+  // late in its travel (0.72 → 0.95), so elements stay visible further up the
+  // screen before dissolving near the top.
   const opacity = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.5, 0.8],
+    [0, 0.2, 0.72, 0.95],
     [0, 1, 1, 0],
   );
-  const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [40, 0, 0, -40]);
+  const y = useTransform(scrollYProgress, [0, 0.2, 0.85, 1], [40, 0, 0, -40]);
 
   return (
     <motion.div ref={ref} className={className} style={{ ...style, opacity, y }}>

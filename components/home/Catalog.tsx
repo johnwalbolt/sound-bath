@@ -2,6 +2,13 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import {
+  FaBandcamp,
+  FaAmazon,
+  FaApple,
+  FaSpotify,
+  FaYoutube,
+} from "react-icons/fa";
 import CtaButton from "@/components/CtaButton";
 import catalogBg from "@/public/assets/catalog-bg.webp";
 import albumArt from "@/public/assets/album-art.webp";
@@ -12,11 +19,11 @@ import SectionBg from "./SectionBg";
 
 // Store buttons; `group` renders a small label above that button.
 const STORES = [
-  { label: "BANDCAMP", group: "BUY" },
-  { label: "AMAZON", group: "STREAM" },
-  { label: "APPLE" },
-  { label: "SPOTIFY" },
-  { label: "YOUTUBE" },
+  { label: "BANDCAMP", group: "BUY", Icon: FaBandcamp },
+  { label: "AMAZON", group: "STREAM", Icon: FaAmazon },
+  { label: "APPLE", Icon: FaApple },
+  { label: "SPOTIFY", Icon: FaSpotify },
+  { label: "YOUTUBE", Icon: FaYoutube },
 ];
 
 /** Catalog section: sun-rings backdrop + a panel with copy/CTA and the album
@@ -77,7 +84,10 @@ export default function Catalog() {
                 <span className="block h-4 text-center text-[11px] font-medium uppercase tracking-[0.22em] text-[#FFFFE5]/55">
                   {s.group ?? ""}
                 </span>
-                <CtaButton fullWidth>{s.label}</CtaButton>
+                <CtaButton fullWidth>
+                  <s.Icon className="shrink-0 text-[15px]" aria-hidden />
+                  {s.label}
+                </CtaButton>
               </div>
             ))}
           </div>

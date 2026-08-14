@@ -243,6 +243,48 @@ html {
     wordmark-breathe 8s ease-in-out infinite;
 }
 
+/* CTA buttons fill instantly with a gradient on hover, which then slowly drifts
+   (seamless loop). Secondary = light white/cyan with black text; primary =
+   vibrant purple/pink/orange with white text. */
+.btn-fill-shimmer:hover,
+.btn-fill-shimmer-primary:hover {
+  background-size: 200% 100%;
+  background-repeat: repeat;
+  border-color: transparent;
+  animation: wordmark-shimmer 12s linear infinite;
+}
+.btn-fill-shimmer:hover {
+  background-image: linear-gradient(
+    105deg,
+    #ffffff 0%,
+    #b3eef5 15%,
+    #ffffff 27%,
+    #f4feff 37%,
+    #ffffff 48%,
+    #45cede 58%,
+    #ffffff 70%,
+    #b3eef5 80%,
+    #f4feff 91%,
+    #ffffff 100%
+  );
+  color: #030203;
+}
+.btn-fill-shimmer-primary:hover {
+  background-image: linear-gradient(
+    105deg,
+    #7c3aed 0%,
+    #a855f7 12%,
+    #f538d4 26%,
+    #7c3aed 40%,
+    #ff6ec7 52%,
+    #f5a623 64%,
+    #9333ea 76%,
+    #ff8a3d 88%,
+    #7c3aed 100%
+  );
+  color: #ffffff;
+}
+
 /* Rounded content panel: clean #000 @80% fill, with a shimmering metallic
    gradient confined to the 1px border ring via a masked pseudo-element (so the
    gradient never bleeds into the fill). */

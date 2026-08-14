@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import { FaInstagram } from "react-icons/fa";
 import CtaButton from "@/components/CtaButton";
 import { BODY } from "./panel";
 import Reveal from "./Reveal";
@@ -59,7 +60,10 @@ export default function Connect() {
               Follow along for updates and releases on social media.
             </p>
             <div className="mt-8">
-              <CtaButton fullWidth>INSTAGRAM</CtaButton>
+              <CtaButton fullWidth>
+                <FaInstagram className="shrink-0 text-[15px]" aria-hidden />
+                INSTAGRAM
+              </CtaButton>
             </div>
           </div>
         </Reveal>
