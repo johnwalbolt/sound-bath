@@ -48,7 +48,7 @@ export default function Catalog() {
                 sleep, solfeggio frequencies, and more.
               </p>
               <div className="mt-8">
-                <CtaButton variant="solid" href="/catalog">
+                <CtaButton variant="solid" fullWidthMobile href="/catalog">
                   VIEW CATALOG
                 </CtaButton>
               </div>
@@ -70,7 +70,14 @@ export default function Catalog() {
         <Reveal className="shimmer-panel">
           <div className="grid grid-cols-2 gap-x-3 gap-y-4 p-8 sm:grid-cols-3 md:grid-cols-5 md:gap-x-4 md:p-10">
             {STREAMING.map((s) => (
-              <div key={s.key} className="flex flex-col items-stretch gap-3">
+              <div
+                key={s.key}
+                className={`flex flex-col items-stretch gap-3 ${
+                  // On mobile (2-col grid), Bandcamp (BUY) takes the full first
+                  // row so the STREAM group (Amazon…) starts on row two.
+                  s.key === "bandcamp" ? "col-span-2 sm:col-span-1" : ""
+                }`}
+              >
                 <span className="block h-4 text-center text-[11px] font-medium uppercase tracking-[0.22em] text-[#FFFFE5]/55">
                   {GROUPS[s.key] ?? ""}
                 </span>

@@ -2,24 +2,30 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 
 /** Outlined pill CTA used throughout the site. `fullWidth` makes it fill its
- *  container (with lighter horizontal padding) for equal-width button rows.
+ *  container (with lighter horizontal padding) for equal-width button rows;
+ *  `fullWidthMobile` does the same only below the md breakpoint.
  *  Internal hrefs use next/link; external (http) hrefs open in a new tab. */
 export default function CtaButton({
   children,
   href = "#",
   variant = "outline",
   fullWidth = false,
+  fullWidthMobile = false,
 }: {
   children: ReactNode;
   href?: string;
   variant?: "outline" | "solid";
   fullWidth?: boolean;
+  fullWidthMobile?: boolean;
 }) {
+  const width = fullWidth
+    ? "w-full px-3"
+    : fullWidthMobile
+      ? "w-full px-3 md:w-auto md:px-8"
+      : "px-8";
   // Only the border transitions; text color + fill switch instantly on hover so
   // they change together (a color transition would lag behind the instant fill).
-  const base = `relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full py-3 text-[12px] font-bold tracking-[0.18em] transition-[border-color] duration-300 ${
-    fullWidth ? "w-full px-3" : "px-8"
-  }`;
+  const base = `relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full py-3 text-[12px] font-bold tracking-[0.18em] transition-[border-color] duration-300 ${width}`;
   const styles =
     variant === "solid"
       ? "btn-fill-shimmer-primary bg-foreground text-background"

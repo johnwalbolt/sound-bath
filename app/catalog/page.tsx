@@ -10,9 +10,13 @@ import { BODY } from "@/components/home/panel";
 import catalogHeader from "@/public/assets/catalog-header.webp";
 import catalogHeroBg from "@/public/assets/catalog-hero-bg.webp";
 import solfeggioArt from "@/public/assets/solfeggio-art.webp";
+import sleepArt from "@/public/assets/sleep-art.jpg";
 
 // Per-category card artwork (placeholder until the rest are supplied).
-const CARD_ART: Record<string, StaticImageData> = { solfeggio: solfeggioArt };
+const CARD_ART: Record<string, StaticImageData> = {
+  solfeggio: solfeggioArt,
+  sleep: sleepArt,
+};
 
 // Mostly-white shimmering header, but each category gets a different accent
 // color and its own speed + phase so they don't animate in unison.

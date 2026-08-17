@@ -7,6 +7,7 @@ import { CATEGORIES, CATEGORY_ORDER } from "@/components/site";
 import { BODY, shimmerTextWhiteStyle } from "@/components/home/panel";
 import categoryHero from "@/public/assets/category-hero-bg.webp";
 import solfeggioArt from "@/public/assets/solfeggio-art.webp";
+import sleepArt from "@/public/assets/sleep-art.jpg";
 import freq417 from "@/public/assets/solfeggio-417.webp";
 import freq396 from "@/public/assets/solfeggio-396.webp";
 import freq528 from "@/public/assets/solfeggio-528.webp";
@@ -16,7 +17,10 @@ import freq852 from "@/public/assets/solfeggio-852.webp";
 import freq963 from "@/public/assets/solfeggio-963.webp";
 
 // Optional per-category artwork shown beside the header/intro.
-const ART: Record<string, StaticImageData> = { solfeggio: solfeggioArt };
+const ART: Record<string, StaticImageData> = {
+  solfeggio: solfeggioArt,
+  sleep: sleepArt,
+};
 
 // Frequency thumbnails keyed by their label.
 const FREQ_IMAGES: Record<string, StaticImageData> = {
