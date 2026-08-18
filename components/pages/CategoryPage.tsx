@@ -8,6 +8,8 @@ import { BODY, shimmerTextWhiteStyle } from "@/components/home/panel";
 import categoryHero from "@/public/assets/category-hero-bg.webp";
 import solfeggioArt from "@/public/assets/solfeggio-art.webp";
 import sleepArt from "@/public/assets/sleep-art.jpg";
+import natureArt from "@/public/assets/nature-art.webp";
+import meditationArt from "@/public/assets/meditation-art.webp";
 import freq417 from "@/public/assets/solfeggio-417.webp";
 import freq396 from "@/public/assets/solfeggio-396.webp";
 import freq528 from "@/public/assets/solfeggio-528.webp";
@@ -20,6 +22,8 @@ import freq963 from "@/public/assets/solfeggio-963.webp";
 const ART: Record<string, StaticImageData> = {
   solfeggio: solfeggioArt,
   sleep: sleepArt,
+  nature: natureArt,
+  meditation: meditationArt,
 };
 
 // Frequency thumbnails keyed by their label.

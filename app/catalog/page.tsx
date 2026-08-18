@@ -11,11 +11,15 @@ import catalogHeader from "@/public/assets/catalog-header.webp";
 import catalogHeroBg from "@/public/assets/catalog-hero-bg.webp";
 import solfeggioArt from "@/public/assets/solfeggio-art.webp";
 import sleepArt from "@/public/assets/sleep-art.jpg";
+import natureArt from "@/public/assets/nature-art.webp";
+import meditationArt from "@/public/assets/meditation-art.webp";
 
-// Per-category card artwork (placeholder until the rest are supplied).
+// Per-category card artwork.
 const CARD_ART: Record<string, StaticImageData> = {
   solfeggio: solfeggioArt,
   sleep: sleepArt,
+  nature: natureArt,
+  meditation: meditationArt,
 };
 
 // Mostly-white shimmering header, but each category gets a different accent
