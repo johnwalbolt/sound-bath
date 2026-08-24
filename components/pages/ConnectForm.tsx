@@ -6,7 +6,7 @@ import { CONTACT_EMAIL } from "@/components/site";
 // ─────────────────────────────────────────────────────────────────────────────
 // Paste the Web3Forms access key here (from https://web3forms.com — it's tied to
 // the destination inbox and is safe to keep in client code). One-line swap:
-const WEB3FORMS_ACCESS_KEY = "";
+const WEB3FORMS_ACCESS_KEY = "19bb7a14-3f89-4716-b725-7175b3dba21c";
 // ─────────────────────────────────────────────────────────────────────────────
 
 const fieldLabel =
