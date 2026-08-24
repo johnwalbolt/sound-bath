@@ -1,5 +1,10 @@
 import type { NextConfig } from "next";
 
+// Under a project Pages URL (username.github.io/<repo>/) the site lives on a
+// subpath, so assets need a basePath. The Actions workflow sets PAGES_BASE_PATH
+// to "/<repo>". For a custom domain (served at root), leave it unset → no prefix.
+const basePath = process.env.PAGES_BASE_PATH ?? "";
+
 const nextConfig: NextConfig = {
   // Static HTML export for GitHub Pages (no server / serverless functions).
   output: "export",
@@ -7,9 +12,7 @@ const nextConfig: NextConfig = {
   images: { unoptimized: true },
   // Emit clean folder URLs (/catalog/index.html) so Pages serves them directly.
   trailingSlash: true,
-  // NOTE: for a custom domain the site is served at the root, so no basePath.
-  // If previewing at username.github.io/<repo>/ before the domain is connected,
-  // set basePath + assetPrefix to "/<repo>".
+  ...(basePath ? { basePath, assetPrefix: basePath } : {}),
 };
 
 export default nextConfig;
