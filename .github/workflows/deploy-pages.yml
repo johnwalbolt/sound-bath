@@ -30,11 +30,9 @@ jobs:
       # npm install (not `npm ci`): the lockfile is generated on macOS and omits
       # some Linux-only optional deps (@emnapi/*), which makes strict `npm ci` fail.
       - run: npm install --no-audit --no-fund
+      # Custom domain (soundbathvibrations.com) serves at the root, so no
+      # PAGES_BASE_PATH — the site builds without a basePath.
       - run: npm run build
-        # Served at johnwalbolt.github.io/sound-bath/ — set the subpath.
-        # Remove this env when a custom domain (root) is connected.
-        env:
-          PAGES_BASE_PATH: /sound-bath
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out
