@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import bgSideWaves from "@/public/assets/bg-sidewaves.webp";
-import heroLogo from "@/public/assets/hero-logo.webp";
+import heroLogo from "@/public/assets/hero-logo-r.webp";
 import { shimmerTextStyle } from "./panel";
 
 /** Full-screen hero: side-wave backdrop, centered logo, tagline beneath.
