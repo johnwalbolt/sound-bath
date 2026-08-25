@@ -39,7 +39,9 @@ export default function ConnectForm() {
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { Accept: "application/json" },
+        // Content-Type is required — without it the browser sends the JSON body
+        // as text/plain and Web3Forms rejects it ("Unrecognized content-type").
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
           from_name: "Sound Bath website",
