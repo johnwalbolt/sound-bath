@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="mt-auto border-t border-white/5 px-6 py-12">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 text-center">
         <p className="text-xs tracking-[0.15em] text-muted">
-          © {new Date().getFullYear()} Dawson Records, Inc. All rights reserved.
+          Sound Bath
         </p>
       </div>
     </footer>
