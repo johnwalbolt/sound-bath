@@ -1,0 +1,6 @@
+# Sound Bath - soundbathvibrations.com
+# All crawlers, including AI assistants, are welcome.
+User-agent: *
+Allow: /
+
+Sitemap: https://soundbathvibrations.com/sitemap.xml

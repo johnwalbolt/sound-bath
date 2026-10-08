@@ -88,9 +88,9 @@ export const CATEGORIES: Record<string, Category> = {
     slug: "solfeggio",
     name: "Solfeggio",
     blurb:
-      "Ancient tones tuned to the body's natural rhythms. Solfeggio frequencies support healing, balance, and transformation.",
+      "A set of sustained tones used for intention setting, meditation, and rest. Many listeners turn to Solfeggio frequencies to relax and refocus.",
     intro:
-      "Solfeggio frequencies are ancient tones believed to align with the body's natural energy centers. First used in sacred Gregorian chants, these specific sound frequencies are thought to support healing, balance the nervous system, and promote deep emotional and spiritual well-being. Many turn to Solfeggio tracks for stress relief, meditation, and sound-based healing.",
+      "Solfeggio frequencies are a set of specific tones, most often listed as 174, 285, 396, 417, 528, 639, 741, 852, and 963 Hz. They are often described as ancient, but there is no solid historical record of that, and frequency-specific healing claims are not established by research. Many listeners still find these steady, sustained tones calming, and turn to Solfeggio tracks for stress relief, meditation, and intention setting.",
     playlistLabel: "Solfeggio Playlist",
     embed: {
       type: "youtube",
@@ -122,9 +122,9 @@ export const CATEGORIES: Record<string, Category> = {
     slug: "sleep",
     name: "Sleep",
     blurb:
-      "Gentle, restorative soundscapes to quiet the mind and ease you into deep rest. Includes Theta wave tracks to support natural sleep cycles.",
+      "Gentle soundscapes to quiet the mind and ease you toward rest. Includes our Theta Waves recordings.",
     intro:
-      "Rest doesn't always come easily—so we've created soundscapes that help. These tracks are designed to slow brainwave activity, relax the body, and prepare the mind for deep, restorative sleep. With soothing textures and Theta wave frequencies, this collection supports a calm nervous system and natural circadian rhythm.",
+      "Rest doesn't always come easily—so we've created soundscapes for winding down. With soothing textures and our Theta Waves recordings, this collection is made for the quiet stretch before sleep. Choose a sound you enjoy and make it part of your evening routine.",
     playlistLabel: "Sleep Sampler Playlist",
     embed: {
       type: "spotify",
@@ -192,9 +192,9 @@ export const CATEGORIES: Record<string, Category> = {
     slug: "meditation",
     name: "Meditation",
     blurb:
-      "Music to center, ground, and open the inner space. Binaural beats and ambient tones support deeper focus, presence, and clarity.",
+      "Music to center, ground, and open the inner space. Binaural beats and ambient tones for meditation, yoga, and quiet focus.",
     intro:
-      "Whether you're just beginning or deepening your practice, this music helps support stillness, focus, and inner clarity. Many of the tracks feature binaural beats, which use gently shifting frequencies to encourage calm, meditative brainwave states. Let each sound guide you inward, moment by moment.",
+      "Whether you're just beginning or deepening your practice, this music is made to accompany stillness, focus, and inner clarity. Many of the tracks feature binaural beats: two slightly different tones, one in each ear, that the brain hears as a gentle pulse. Let each sound guide you inward, moment by moment.",
     playlistLabel: "Meditation Sampler Playlist",
     embed: {
       type: "spotify",
