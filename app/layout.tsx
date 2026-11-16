@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import AnalyticsConsent from "@/components/AnalyticsConsent";
 import { Montserrat, Cormorant_Garamond, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { OFFICIAL_PROFILES, SITE_URL } from "@/components/profiles";
@@ -98,6 +99,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           }}
         />
         {children}
+        <AnalyticsConsent />
       </body>
     </html>
   );
